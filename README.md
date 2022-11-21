@@ -1,13 +1,16 @@
-# EMCL
-The implementation of paper [Expectation-Maximization Contrastive Learning for Compact Video-and-Language Representations]().
+# EMCL✨
+The implementation of NeurIPS 2022 paper [Expectation-Maximization Contrastive Learning for Compact Video-and-Language Representations]().
 
-## Intro
+## Overview
 Most video-and-language representation learning approaches employ contrastive learning, e.g., CLIP, to project the video and text features into a common latent space according to the semantic similarities of text-video pairs. However, such learned shared latent spaces are not often optimal, and the modality gap between visual and textual representation can not be fully eliminated. In this paper, we propose Expectation-Maximization Contrastive Learning (EMCL) to learn compact video-and-language representations.
 
 ![EMCL](EMCL.png)
 
-# Citation
-If you find our code useful in your work, you can cite the following paper:
+## Update
+Nov 21 2022: Release code for reimplementing the experiments in the paper.
+
+## Reference
+If you find our code helpful in your work, please consider citing:
 ```
 @inproceedings{
 jin2022expectationmaximization,
