@@ -44,7 +44,7 @@ To test the trained model, please refer  `test/`.
 
 ### Testing
 
-####CLIP2Video
+#### CLIP2Video
 ```sh
 DATA_PATH=${VERSION}/data/msrvtt_data/
 CHECKPOINT=[downloaded trained model path]
@@ -73,7 +73,7 @@ python ${VERSION}/infer_retrieval.py \
 --center_proj TAB_TDB \
 --clip_path ${VERSION}/ViT-B-32.pt
 ```
-####CLIP2Video + EMCL (EMCL as an inference module with no extra training)
+#### CLIP2Video + EMCL (EMCL as an inference module with no extra training)
 ```sh
 DATA_PATH=${VERSION}/data/msrvtt_data/
 CHECKPOINT=[downloaded trained model path]
