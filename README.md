@@ -13,7 +13,7 @@ Nov 21 2022: Release code for reimplementing the experiments in the paper.
 ![EMCL](EMCL.png)
 
 
-## Reference
+## Citation
 If you find our code helpful in your work, please consider citing:
 ```
 @inproceedings{
@@ -26,5 +26,7 @@ year={2022}
 }
 ```
 
+## Acknowledgments
+Our code is based on [MMT](https://github.com/gabeur/mmt), [CLIP](https://github.com/openai/CLIP), [CLIP4Clip](https://github.com/ArrowLuo/CLIP4Clip/) and [CLIP2Video](https://github.com/CryhanFang/CLIP2Video). We sincerely appreciate for their contributions.
 
 [def]: motivation.pdf
