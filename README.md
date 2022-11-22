@@ -6,9 +6,6 @@ Most video-and-language representation learning approaches employ contrastive le
 
 ![motivation](Modality_gap.png)
 
-## Update
-Nov 21 2022: Release code for reimplementing the experiments in the paper.
-
 ## Method
 ![EMCL](EMCL.png)
 
