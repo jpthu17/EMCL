@@ -1,19 +1,19 @@
 # EMCL✨
 The implementation of NeurIPS 2022 paper [Expectation-Maximization Contrastive Learning for Compact Video-and-Language Representations](https://arxiv.org/pdf/2211.11427.pdf).
 
-###Updates
+### Updates
 * Dec 14 2022: Add the code of [EMCL-Net](video_retrieval/EMCL-Net).
 * Nov 21 2022: Release code for reimplementing the experiments in the paper.
 
 ## Quick Start
-###Text-video retrieval
+### Text-video retrieval
 * The implementation of EMCL-Net ([video_retrieval/EMCL-Net]((video_retrieval/EMCL-Net))).
 
 * An example of using EMCL as a joint training module ([video_retrieval/as_a_joint_training_module]((video_retrieval/as_a_joint_training_module))).
 
 * An example of using EMCL as an inference module with no extra training ([video_retrieval/as_an_inference_module]((video_retrieval/as_an_inference_module))).
 
-###Video-question Answering
+### Video-question Answering
 * The implementation of EMCL-QA ([video_question_answering]((video_question_answering))).
 
 ## Overview
