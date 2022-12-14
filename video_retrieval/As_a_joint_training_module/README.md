@@ -1,4 +1,7 @@
-## MMT+EMCL
+## EMCL as a joint training module (EMCL+MMT)
+
+EMCL can be easy to be incorporated into any existing methods.
+
 ### Requirements
 * Python 3.7 
 * Pytorch 1.4.0
@@ -30,10 +33,7 @@ tar -xvf LSMDC.tar.gz
 python -m train --config configs/*
 ```
 
-## EMCL-Net
-
-We plan to release the EMCL-Net code after the follow-up paper is published.
 
 ## Acknowledge
-* This code implementation are adopted from [MMT](https://github.com/gabeur/mmt), [CLIP](https://github.com/openai/CLIP) and [CLIP4Clip](https://github.com/ArrowLuo/CLIP4Clip/).
+* This code implementation are adopted from [MMT](https://github.com/gabeur/mmt).
 We sincerely appreciate for their contributions. We sincerely appreciate for their contributions.

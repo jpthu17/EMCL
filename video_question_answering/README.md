@@ -9,11 +9,21 @@ pip install opencv-python boto3 requests pandas
 
 ### Data Preparing
 
-**For MSRVTT**
+For MSRVTT, the official data and video links can be found in [link](http://ms-multimedia-challenge.com/2017/dataset).
 
-The official data and video links can be found in [link](http://ms-multimedia-challenge.com/2017/dataset).
+For the convenience, the splits and captions can be found in sharing from [CLIP4Clip](https://github.com/ArrowLuo/CLIP4Clip/),
 
-#### Compress Video for Speed-up (optional)
+```shell
+wget https://github.com/ArrowLuo/CLIP4Clip/releases/download/v0.0/msrvtt_data.zip
+```
+
+Besides, the raw videos can be found in sharing from [Frozen in Time](https://github.com/m-bain/frozen-in-time), i.e.,
+
+```shell
+wget https://www.robots.ox.ac.uk/~maxbain/frozen-in-time/data/MSRVTT.zip
+```
+
+### Compress Video for Speed-up (optional)
 ```sh
 python preprocess/compress_video.py --input_root [raw_video_path] --output_root [compressed_video_path]
 ```

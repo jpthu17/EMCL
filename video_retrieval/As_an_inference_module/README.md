@@ -1,4 +1,4 @@
-## EMCL as an inference module with no extra training
+## EMCL as an inference module with no extra training (EMCL+CLIP2Video)
 
 EMCL can be incorporated into trained baselines as an out-of-the-box inference module with no extra training.
 
@@ -10,9 +10,14 @@ pip install -r requirements.txt
 ### Download data and Pre-trained Model
 
 **Download official video:**
-Official videos of different data can be found as follows:
 
-* MSRVTT: [link](http://ms-multimedia-challenge.com/2017/dataset).
+For MSRVTT, the official data and video links can be found in [link](http://ms-multimedia-challenge.com/2017/dataset).
+
+For the convenience, the raw videos can be found in sharing from [Frozen in Time](https://github.com/m-bain/frozen-in-time), i.e.,
+
+```shell
+wget https://www.robots.ox.ac.uk/~maxbain/frozen-in-time/data/MSRVTT.zip
+```
 
 **Pre-process**
 
