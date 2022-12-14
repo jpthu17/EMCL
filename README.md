@@ -6,7 +6,7 @@ The implementation of NeurIPS 2022 paper [Expectation-Maximization Contrastive L
 * Nov 21 2022: Release code for reimplementing the experiments in the paper.
 
 ## Quick Start
-### Text-video retrieval
+### Text-video Retrieval
 * The implementation of EMCL-Net ([video_retrieval/EMCL-Net](https://github.com/jpthu17/EMCL/tree/main/video_retrieval/EMCL-Net)).
 
 * An example of using EMCL as a joint training module ([video_retrieval/as_a_joint_training_module](https://github.com/jpthu17/EMCL/tree/main/video_retrieval/As_a_joint_training_module)).
