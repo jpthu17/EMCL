@@ -7,14 +7,14 @@ The implementation of NeurIPS 2022 paper [Expectation-Maximization Contrastive L
 
 ## Quick Start
 ### Text-video retrieval
-* The implementation of EMCL-Net ([video_retrieval/EMCL-Net]((video_retrieval/EMCL-Net))).
+* The implementation of EMCL-Net ([video_retrieval/EMCL-Net](https://github.com/jpthu17/EMCL/tree/main/video_retrieval/EMCL-Net)).
 
-* An example of using EMCL as a joint training module ([video_retrieval/as_a_joint_training_module]((video_retrieval/as_a_joint_training_module))).
+* An example of using EMCL as a joint training module ([video_retrieval/as_a_joint_training_module](https://github.com/jpthu17/EMCL/tree/main/video_retrieval/As_a_joint_training_module)).
 
-* An example of using EMCL as an inference module with no extra training ([video_retrieval/as_an_inference_module]((video_retrieval/as_an_inference_module))).
+* An example of using EMCL as an inference module with no extra training ([video_retrieval/as_an_inference_module](https://github.com/jpthu17/EMCL/tree/main/video_retrieval/As_an_inference_module)).
 
 ### Video-question Answering
-* The implementation of EMCL-QA ([video_question_answering]((video_question_answering))).
+* The implementation of EMCL-QA ([video_question_answering](https://github.com/jpthu17/EMCL/tree/main/video_question_answering)).
 
 ## Overview
 Most video-and-language representation learning approaches employ contrastive learning, e.g., CLIP, to project the video and text features into a common latent space according to the semantic similarities of text-video pairs. However, such learned shared latent spaces are not often optimal, and the modality gap between visual and textual representation can not be fully eliminated. In this paper, we propose Expectation-Maximization Contrastive Learning (EMCL) to learn compact video-and-language representations.
