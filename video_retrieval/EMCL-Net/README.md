@@ -47,7 +47,7 @@ This script will compress the video to *3fps* with width *224* (or height *224*)
 - Train on MSR-VTT 1k.
 
 |    Protocol         |   T2V R@1     |   T2V R@5     |   T2V R@10    | Mean R |
-| :-----------:  | :-----------: | ---------- | :-----------:  | :-----------: |
+| :-----------:  | :-----------: | :----------: | :-----------:  | :-----------: |
 | EMCL-Net (2 V100 GPUs) |	47.0	|   72.6	|   83.0	|   13.6   |
 | EMCL-Net (8 V100 GPUs) |	48.2	|   74.7	|   83.6	|   13.1   |
 
