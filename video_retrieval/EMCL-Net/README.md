@@ -46,6 +46,36 @@ This script will compress the video to *3fps* with width *224* (or height *224*)
 
 - Train on MSR-VTT 1k.
 
+|    Protocol         |   T2V R@1     |   T2V R@5     |   T2V R@10    | Mean R |
+| :-----------:  | :-----------: | ---------- | :-----------:  | :-----------: |
+| EMCL-Net (2 V100 GPUs) |	47.0	|   72.6	|   83.0	|   13.6   |
+| EMCL-Net (8 V100 GPUs) |	48.2	|   74.7	|   83.6	|   13.1   |
+
+We recommend using more GPUs for better performance:
+```shell
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 \
+python -m torch.distributed.launch \
+--master_port 2502 \
+--nproc_per_node=8 \
+main_retrieval.py \
+--do_train 1 \
+--workers 8 \
+--n_display 50 \
+--epochs 5 \
+--lr 1e-4 \
+--coef_lr 1e-3 \
+--batch_size 128 \
+--batch_size_val 128 \
+--anno_path data/MSR-VTT/anns \
+--video_path ${DATA_PATH}/MSRVTT_Videos \
+--datatype msrvtt \
+--max_words 32 \
+--max_frames 12 \
+--video_framerate 1 \
+--output_dir ${OUTPUT_PATH}
+```
+
+You can also use 2 V100 GPUs to reproduce the results in the paper:
 ```shell
 CUDA_VISIBLE_DEVICES=0,1 \
 python -m torch.distributed.launch \
@@ -68,7 +98,6 @@ main_retrieval.py \
 --video_framerate 1 \
 --output_dir ${OUTPUT_PATH}
 ```
-
 
 ## Acknowledge
 * This code implementation are adopted from [CLIP](https://github.com/openai/CLIP) and [DRL](https://github.com/foolwood/DRL).

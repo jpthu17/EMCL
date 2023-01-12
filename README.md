@@ -2,6 +2,9 @@
 The implementation of NeurIPS 2022 paper [Expectation-Maximization Contrastive Learning for Compact Video-and-Language Representations](https://arxiv.org/pdf/2211.11427.pdf).
 
 ### Updates
+* Jan 12 2023: Our approach achieves better performance (46.8 -> 48.2 on MSR-VTT dataset) when training with more GPUs (2 -> 8). So we recommend using more GPUs for better performance.
+
+![results](pic/results.png)
 * Dec 14 2022: Add the code of [EMCL-Net](video_retrieval/EMCL-Net).
 * Nov 21 2022: Release code for reimplementing the experiments in the paper.
 
