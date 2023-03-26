@@ -36,6 +36,8 @@ jin2022expectationmaximization,
 title={Expectation-Maximization Contrastive Learning for Compact Video-and-Language Representations},
 author={Peng Jin and JinFa Huang and Fenglin Liu and Xian Wu and Shen Ge and Guoli Song and David A. Clifton and Jie Chen},
 booktitle={Advances in Neural Information Processing Systems},
+volume={35},
+pages={30291--30306},
 editor={Alice H. Oh and Alekh Agarwal and Danielle Belgrave and Kyunghyun Cho},
 year={2022}
 }
