@@ -15,10 +15,11 @@ from .dataloader_retrieval import RetrievalDataset
 
 class MsvdDataset(RetrievalDataset):
     """MSVD dataset loader."""
+
     def __init__(self, subset, anno_path, video_path, tokenizer, max_words=32,
                  max_frames=12, video_framerate=1, image_resolution=224, mode='all', config=None):
         super(MsvdDataset, self).__init__(subset, anno_path, video_path, tokenizer, max_words,
-                                            max_frames, video_framerate, image_resolution, mode, config=config)
+                                          max_frames, video_framerate, image_resolution, mode, config=config)
         pass
 
     def _get_anns(self, subset='train'):
@@ -54,7 +55,7 @@ class MsvdDataset(RetrievalDataset):
             for cap in captions[video_id]:
                 cap_txt = " ".join(cap)
                 sentences_dict[len(sentences_dict)] = (video_id, (cap_txt, None, None))
-            self.cut_off_points.append(len(sentences_dict))
+            self.cut_off_points.append(len(sentences_dict) - 1)
 
         if subset == "val" or subset == "test":
             self.sentence_num = len(sentences_dict)

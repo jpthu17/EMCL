@@ -201,16 +201,12 @@ def dataloader_msvd_test(args, tokenizer, subset="test"):
         video_framerate=args.video_framerate,
         config=args
     )
-    try:
-        test_sampler = torch.utils.data.distributed.DistributedSampler(msvd_testset)
-    except:
-        test_sampler = None  # cpu
+
     dataloader_msvd = DataLoader(
         msvd_testset,
-        batch_size=args.batch_size_val // args.world_size,
+        batch_size=args.batch_size_val,
         num_workers=args.workers,
         shuffle=False,
-        sampler=test_sampler,
         drop_last=False,
     )
     return dataloader_msvd, len(msvd_testset)

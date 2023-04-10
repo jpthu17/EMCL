@@ -373,13 +373,13 @@ def eval_epoch(args, model, test_dataloader, device):
     # #################################################################
     multi_sentence_ = False
     cut_off_points_, sentence_num_, video_num_ = [], -1, -1
-    if isinstance(test_dataloader, list) and hasattr(test_dataloader[0].dataset, 'multi_sentence_per_video') \
-            and test_dataloader[0].dataset.multi_sentence_per_video:
+    if hasattr(test_dataloader.dataset, 'multi_sentence_per_video') \
+            and test_dataloader.dataset.multi_sentence_per_video:
         multi_sentence_ = True
-        cut_off_points_ = test_dataloader[0].dataset.cut_off_points
+        cut_off_points_ = test_dataloader.dataset.cut_off_points
+        sentence_num_ = test_dataloader.dataset.sentence_num
+        video_num_ = test_dataloader.dataset.video_num
         cut_off_points_ = [itm - 1 for itm in cut_off_points_]
-        sentence_num_ = test_dataloader[0].dataset.get_text_len()
-        video_num_ = test_dataloader[0].dataset.get_video_len()
 
     if multi_sentence_:
         logger.warning("Eval under the multi-sentence per video clip setting.")
@@ -395,41 +395,42 @@ def eval_epoch(args, model, test_dataloader, device):
     with torch.no_grad():
         tic = time.time()
         if multi_sentence_:  # multi-sentences retrieval means: one clip has two or more descriptions.
-            # text feature
-            logger.info('[start] extract text feature')
-            for batch in tqdm(test_dataloader[0]):
+            total_video_num = 0
+            logger.info('[start] extract text+video feature')
+            for batch in tqdm(test_dataloader):
                 batch = tuple(t.to(device) for t in batch)
-                text_ids, text_mask, inds = batch
-                sequence_output = model.get_sequence_output(text_ids, text_mask)
+                text_ids, text_mask, video, video_mask, inds, _ = batch
+
+                b, *_t = video.shape
+                text_feat, cls = model.get_text_feat(text_ids, text_mask)
                 ids_t.append(inds)
                 batch_mask_t.append(text_mask)
-                batch_feat_t.append(sequence_output)
-            ids_t = allgather(torch.cat(ids_t, dim=0), args)
-            batch_feat_t = allgather(torch.cat(batch_feat_t, dim=0), args)
-            batch_mask_t = allgather(torch.cat(batch_mask_t, dim=0), args)
-            batch_feat_t[ids_t] = batch_feat_t.clone()
-            batch_mask_t[ids_t] = batch_mask_t.clone()
-            batch_feat_t = batch_feat_t[:ids_t.max() + 1, ...]
-            batch_mask_t = batch_mask_t[:ids_t.max() + 1, ...]
-            logger.info('[finish] extract text feature')
+                batch_feat_t.append(text_feat)
+                batch_cls.append(cls)
 
-            # video feature
-            logger.info('[start] extract video feature')
-            for batch in tqdm(test_dataloader[1]):
-                batch = tuple(t.to(device) for t in batch)
-                video, video_mask, inds = batch
                 video_feat = model.get_video_feat(video, video_mask)
-                ids_v.append(inds)
                 batch_mask_v.append(video_mask)
                 batch_feat_v.append(video_feat)
-            ids_v = allgather(torch.cat(ids_v, dim=0), args)
-            batch_feat_v = allgather(torch.cat(batch_feat_v, dim=0), args)
-            batch_mask_v = allgather(torch.cat(batch_mask_v, dim=0), args)
-            batch_feat_v[ids_v] = batch_feat_v.clone()
-            batch_mask_v[ids_v] = batch_mask_v.clone()
-            batch_feat_v = batch_feat_v[:ids_v.max() + 1, ...]
-            batch_mask_v = batch_mask_v[:ids_v.max() + 1, ...]
-            logger.info('[finish] extract video feature')
+
+                total_video_num += b
+
+            ids_t = torch.cat(ids_t, dim=0).squeeze()
+            batch_mask_t = torch.cat(batch_mask_t, dim=0)
+            batch_mask_v = torch.cat(batch_mask_v, dim=0)
+            batch_feat_t = torch.cat(batch_feat_t, dim=0)
+            batch_feat_v = torch.cat(batch_feat_v, dim=0)
+            batch_cls = torch.cat(batch_cls, dim=0)
+
+            _batch_feat_v, _batch_mask_v = [], []
+            for i in range(len(ids_t)):
+                if ids_t[i] in cut_off_points_:
+                    _batch_feat_v.append(batch_feat_v[i])
+                    _batch_mask_v.append(batch_mask_v[i])
+
+            batch_feat_v = torch.stack(_batch_feat_v, dim=0)
+            batch_mask_v = torch.stack(_batch_mask_v, dim=0)
+
+            logger.info('[finish] extract text+video feature')
         else:
             logger.info('[start] extract text+video feature')
             for batch in tqdm(test_dataloader):
@@ -476,7 +477,20 @@ def eval_epoch(args, model, test_dataloader, device):
     toc2 = time.time()
     logger.info('[start] compute_metrics')
     if multi_sentence_:
-        pass
+        logger.info("before reshape, sim matrix size: {} x {}".format(sim_matrix.shape[0], sim_matrix.shape[1]))
+        cut_off_points2len_ = [itm + 1 for itm in cut_off_points_]
+        max_length = max([e_ - s_ for s_, e_ in zip([0] + cut_off_points2len_[:-1], cut_off_points2len_)])
+        sim_matrix_new = []
+        for s_, e_ in zip([0] + cut_off_points2len_[:-1], cut_off_points2len_):
+            sim_matrix_new.append(np.concatenate((sim_matrix[s_:e_],
+                                                  np.full((max_length - e_ + s_, sim_matrix.shape[1]), -np.inf)),
+                                                 axis=0))
+        sim_matrix_new = np.stack(tuple(sim_matrix_new), axis=0)
+        logger.info("after reshape, sim matrix size: {} x {} x {}".
+                    format(sim_matrix_new.shape[0], sim_matrix_new.shape[1], sim_matrix_new.shape[2]))
+
+        _tv_metrics = tensor_text_to_video_metrics(sim_matrix_new)
+        _vt_metrics = compute_metrics(tensor_video_to_text_sim(sim_matrix_new))
     else:
         logger.info("sim matrix size: {}, {}".format(sim_matrix.shape[0], sim_matrix.shape[1]))
         _tv_metrics = compute_metrics(sim_matrix)
@@ -508,14 +522,15 @@ def eval_epoch(args, model, test_dataloader, device):
         format(_vt_metrics['R1'], _vt_metrics['R5'], _vt_metrics['R10'], _vt_metrics['R50'], _vt_metrics['MR'],
                _vt_metrics['MeanR']))
 
-    logger.info(
-        "Text-to-Video (inverted softmax): R@1: {:.1f} - R@5: {:.1f} - R@10: {:.1f} - R@50: {:.1f} - Median R: {:.1f} - Mean R: {:.1f}".
-        format(tv_metrics['R1'], tv_metrics['R5'], tv_metrics['R10'], tv_metrics['R50'], tv_metrics['MR'],
-               tv_metrics['MeanR']))
-    logger.info(
-        "Video-to-Text (inverted softmax): R@1: {:.1f} - R@5: {:.1f} - R@10: {:.1f} - R@50: {:.1f} - Median R: {:.1f} - Mean R: {:.1f}".
-        format(vt_metrics['R1'], vt_metrics['R5'], vt_metrics['R10'], vt_metrics['R50'], vt_metrics['MR'],
-               vt_metrics['MeanR']))
+    if not multi_sentence_:
+        logger.info(
+            "Text-to-Video (inverted softmax): R@1: {:.1f} - R@5: {:.1f} - R@10: {:.1f} - R@50: {:.1f} - Median R: {:.1f} - Mean R: {:.1f}".
+            format(tv_metrics['R1'], tv_metrics['R5'], tv_metrics['R10'], tv_metrics['R50'], tv_metrics['MR'],
+                tv_metrics['MeanR']))
+        logger.info(
+            "Video-to-Text (inverted softmax): R@1: {:.1f} - R@5: {:.1f} - R@10: {:.1f} - R@50: {:.1f} - Median R: {:.1f} - Mean R: {:.1f}".
+            format(vt_metrics['R1'], vt_metrics['R5'], vt_metrics['R10'], vt_metrics['R50'], vt_metrics['MR'],
+                vt_metrics['MeanR']))
 
     return _tv_metrics['R1']
 

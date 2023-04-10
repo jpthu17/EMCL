@@ -49,11 +49,10 @@ class DiDeMoDataset(Dataset):
         video_json_path_dict["train"] = os.path.join(self.data_path, "train_data.json")
         video_json_path_dict["val"] = os.path.join(self.data_path, "val_data.json")
         video_json_path_dict["test"] = os.path.join(self.data_path, "test_data.json")
-        
 
         with open(video_id_path_dict[self.subset], 'r') as fp:
             video_ids = [itm.strip() for itm in fp.readlines()]
-   
+
         caption_dict = {}
         with open(video_json_path_dict[self.subset], 'r') as f:
             json_data = json.load(f)
@@ -204,9 +203,11 @@ class DiDeMoDataset(Dataset):
                     else:
                         video[i][:slice_len, ...] = video_slice
                 else:
-                    print("video path: {} error. video id: {}, start: {}, end: {}".format(video_path, idx, start_time, end_time))
+                    print("video path: {} error. video id: {}, start: {}, end: {}".format(video_path, idx, start_time,
+                                                                                          end_time))
         except Exception as excep:
-            print("video path: {} error. video id: {}, start: {}, end: {}, Error: {}".format(video_path, idx, s, e, excep))
+            print("video path: {} error. video id: {}, start: {}, end: {}, Error: {}".format(video_path, idx, s, e,
+                                                                                             excep))
             pass
             # raise e
 
