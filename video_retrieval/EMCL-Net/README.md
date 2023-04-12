@@ -56,8 +56,10 @@ Due to license restrictions, we cannot share this dataset.
 
 For ActivityNet Captions, the official data and video links can be found in [link](https://cs.stanford.edu/people/ranjaykrishna/densevid/).
 
+For convenience, we share the processed dataset in [link](https://disk.pku.edu.cn/#/link/8BFAE40CBD36364B1FAACC3F4A89F92A).
+
 ```shell
-TODO
+https://disk.pku.edu.cn/#/link/8BFAE40CBD36364B1FAACC3F4A89F92A
 ```
 
 ### DiDeMo
