@@ -40,10 +40,10 @@ wget https://www.robots.ox.ac.uk/~maxbain/frozen-in-time/data/MSRVTT.zip
 
 For MSDC, the official data and video links can be found in [link](https://www.cs.utexas.edu/users/ml/clamp/videoDescription/).
 
-For convenience, we share the processed dataset in [link](https://disk.pku.edu.cn:443/link/8C4EA8CED8ED249D35CCEF0D54F7C320).
+For convenience, we share the processed dataset in [link](https://disk.pku.edu.cn:443/link/CC02BD15907BFFF63E5AAE4BF353A202).
 
 ```shell
-https://disk.pku.edu.cn:443/link/8C4EA8CED8ED249D35CCEF0D54F7C320
+https://disk.pku.edu.cn:443/link/CC02BD15907BFFF63E5AAE4BF353A202
 ```
 
 ### LSMDC
@@ -56,10 +56,10 @@ Due to license restrictions, we cannot share this dataset.
 
 For ActivityNet Captions, the official data and video links can be found in [link](https://cs.stanford.edu/people/ranjaykrishna/densevid/).
 
-For convenience, we share the processed dataset in [link](https://disk.pku.edu.cn/#/link/8BFAE40CBD36364B1FAACC3F4A89F92A).
+For convenience, we share the processed dataset in [link](https://disk.pku.edu.cn:443/link/83351ABDAEA4A17A5A139B799BB524AC).
 
 ```shell
-https://disk.pku.edu.cn/#/link/8BFAE40CBD36364B1FAACC3F4A89F92A
+https://disk.pku.edu.cn:443/link/83351ABDAEA4A17A5A139B799BB524AC
 ```
 
 ### DiDeMo
