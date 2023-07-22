@@ -230,7 +230,7 @@ main_retrieval.py \
 --do_train 1 \
 --workers 8 \
 --n_display 10 \
---epochs 20 \
+--epochs 5 \
 --lr 1e-4 \
 --coef_lr 1e-3 \
 --batch_size 128 \
