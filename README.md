@@ -18,6 +18,27 @@ The implementation of NeurIPS 2022 paper [Expectation-Maximization Contrastive L
 * Nov 21 2022: Release code for reimplementing the experiments in the paper.
 
 ## 🚀 Quick Start
+### Datasets
+<div align=center>
+
+|Datasets|Google Cloud|Baidu Yun|Peking University Yun|
+|:--------:|:--------------:|:-----------:|:-----------:|
+| MSR-VTT | [Download](https://drive.google.com/drive/folders/1LYVUCPRxpKMRjCSfB_Gz-ugQa88FqDu_?usp=sharing) | [Download](https://pan.baidu.com/s/1Gdf6ivybZkpua5z1HsCWRA?pwd=enav) | [Download](https://disk.pku.edu.cn:443/link/BE39AF93BE1882FF987BAC900202B266) |
+| MSVD | [Download](https://drive.google.com/drive/folders/18EXLWvCCQMRBd7-n6uznBUHdP4uC6Q15?usp=sharing) | [Download](https://pan.baidu.com/s/1hApFdxgV3TV2TCcnM_yBiA?pwd=kbfi) | [Download](https://disk.pku.edu.cn:443/link/CC02BD15907BFFF63E5AAE4BF353A202) |
+| ActivityNet | TODO | [Download](https://pan.baidu.com/s/1tI441VGvN3In7pcvss0grg?pwd=2ddy) | [Download](https://disk.pku.edu.cn:443/link/83351ABDAEA4A17A5A139B799BB524AC) |
+| DiDeMo | TODO | [Download](https://pan.baidu.com/s/1Tsy9nb1hWzeXaZ4xr7qoTg?pwd=c842) | [Download](https://disk.pku.edu.cn:443/link/50EBDF3124AD82272F061FE8E7880403) |
+
+</div>
+
+### Model Zoo
+<div align=center>
+
+|Checkpoint|Google Cloud|Baidu Yun|Peking University Yun|
+|:--------:|:--------------:|:-----------:|:-----------:|
+| ActivityNet | [Download](https://drive.google.com/file/d/1o4kVq8gHUIxR5wzWNw6NWVX13FGP8W2E/view?usp=drive_link) | [Download](https://pan.baidu.com/s/101iJ4Ml41k3TnWKgbV7sig?pwd=er2w) | [Download](https://disk.pku.edu.cn:443/link/50EBDF3124AD82272F061FE8E7880403) |
+
+</div>
+
 ### Text-video Retrieval
 * The implementation of EMCL-Net ([video_retrieval/EMCL-Net](https://github.com/jpthu17/EMCL/tree/main/video_retrieval/EMCL-Net)).
 
