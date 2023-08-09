@@ -35,6 +35,7 @@ The implementation of NeurIPS 2022 paper [Expectation-Maximization Contrastive L
 
 |Checkpoint|Google Cloud|Baidu Yun|Peking University Yun|
 |:--------:|:--------------:|:-----------:|:-----------:|
+| MSR-VTT | [Download](https://drive.google.com/file/d/1gxTKW5KfXvJK8-3WsOftRtCszMMCssv7/view?usp=sharing) | TODO | [Download](https://disk.pku.edu.cn:443/link/6165FBD0B60C4E1ED83E78ADF9635471) |
 | ActivityNet | [Download](https://drive.google.com/file/d/1o4kVq8gHUIxR5wzWNw6NWVX13FGP8W2E/view?usp=drive_link) | [Download](https://pan.baidu.com/s/101iJ4Ml41k3TnWKgbV7sig?pwd=er2w) | [Download](https://disk.pku.edu.cn:443/link/50EBDF3124AD82272F061FE8E7880403) |
 
 </div>
