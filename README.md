@@ -15,7 +15,6 @@ The implementation of NeurIPS 2022 paper [Expectation-Maximization Contrastive L
 > Accepted by CVPR 2023 (Highlight) | [[HBI Code]](https://github.com/jpthu17/HBI)<br>
 > Peng Jin, Jinfa Huang, Pengfei Xiong, Shangxuan Tian, Chang Liu, Xiangyang Ji, Li Yuan, Jie Chen
 
-
 > [**DiffusionRet: Generative Text-Video Retrieval with Diffusion Model**](https://arxiv.org/abs/2303.09867)<br>
 > Accepted by ICCV 2023 | [[DiffusionRet Code]](https://github.com/jpthu17/DiffusionRet)<br>
 > Peng Jin, Hao Li, Zesen Cheng, Kehan Li, Xiangyang Ji, Chang Liu, Li Yuan, Jie Chen
