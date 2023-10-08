@@ -8,6 +8,23 @@
 
 The implementation of NeurIPS 2022 paper [Expectation-Maximization Contrastive Learning for Compact Video-and-Language Representations](https://arxiv.org/pdf/2211.11427.pdf).
 
+<details open><summary>💡 I also have other video-language projects that may interest you ✨. </summary><p>
+
+
+> [**Video-Text as Game Players: Hierarchical Banzhaf Interaction for Cross-Modal Representation Learning**](https://arxiv.org/abs/2303.14369)<br>
+> Accepted by CVPR 2023 (Highlight) | [[HBI Code]](https://github.com/jpthu17/HBI)<br>
+> Peng Jin, Jinfa Huang, Pengfei Xiong, Shangxuan Tian, Chang Liu, Xiangyang Ji, Li Yuan, Jie Chen
+
+
+> [**DiffusionRet: Generative Text-Video Retrieval with Diffusion Model**](https://arxiv.org/abs/2303.09867)<br>
+> Accepted by ICCV 2023 | [[DiffusionRet Code]](https://github.com/jpthu17/DiffusionRet)<br>
+> Peng Jin, Hao Li, Zesen Cheng, Kehan Li, Xiangyang Ji, Chang Liu, Li Yuan, Jie Chen
+
+> [**Text-Video Retrieval with Disentangled Conceptualization and Set-to-Set Alignment**](https://arxiv.org/abs/2305.12218)<br>
+> Accepted by IJCAI 2023 | [[DiCoSA Code]](https://github.com/jpthu17/DiCoSA)<br>
+> Peng Jin, Hao Li, Zesen Cheng, Jinfa Huang, Zhennan Wang, Li Yuan, Chang Liu, Jie Chen
+</p></details>
+
 ### 📣 Updates
 * Apr 12 2023: We provide download links for the processed datasets, including MSRVTT, MSVD, ActivityNet Captions, and DiDeMo. (See [EMCL-Net](video_retrieval/EMCL-Net))
 * Apr 10 2023: Add MSVD, LSMDC, ActivityNet Captions, and DiDeMo datasets (See [EMCL-Net](video_retrieval/EMCL-Net)).
