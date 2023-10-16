@@ -25,13 +25,13 @@ The implementation of NeurIPS 2022 paper [Expectation-Maximization Contrastive L
 </p></details>
 
 ### 📣 Updates
-* Apr 12 2023: We provide download links for the processed datasets, including MSRVTT, MSVD, ActivityNet Captions, and DiDeMo. (See [EMCL-Net](video_retrieval/EMCL-Net))
-* Apr 10 2023: Add MSVD, LSMDC, ActivityNet Captions, and DiDeMo datasets (See [EMCL-Net](video_retrieval/EMCL-Net)).
-* Jan 12 2023: Our approach achieves better performance (46.8 -> 48.2 on MSR-VTT dataset) when training with more GPUs (2 -> 8). So we recommend using more GPUs for better performance.
+* **[2023/04/12]**: We provide download links for the processed datasets, including MSRVTT, MSVD, ActivityNet Captions, and DiDeMo. (See [EMCL-Net](video_retrieval/EMCL-Net))
+* **[2023/04/10]**: Add MSVD, LSMDC, ActivityNet Captions, and DiDeMo datasets (See [EMCL-Net](video_retrieval/EMCL-Net)).
+* **[2023/01/12]**: Our approach achieves better performance (46.8 -> 48.2 on MSR-VTT dataset) when training with more GPUs (2 -> 8). So we recommend using more GPUs for better performance.
 
 ![results](pic/results.png)
-* Dec 14 2022: Add the code of [EMCL-Net](video_retrieval/EMCL-Net).
-* Nov 21 2022: Release code for reimplementing the experiments in the paper.
+* **[2022/12/14]**: Add the code of [EMCL-Net](video_retrieval/EMCL-Net).
+* **[2022/11/21]**: Release code for reimplementing the experiments in the paper.
 
 ## 🚀 Quick Start
 ### Datasets
